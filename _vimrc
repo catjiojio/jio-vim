@@ -416,7 +416,7 @@ endif
 "set makeprg=ndk-build
 set makeprg=make
 
-map <leader>mk :call Do_make()<CR>
+map <leader>b :chd $PWD <CR> :call Do_make()<CR>
 "函数名需要大写
 function Do_make()
 execute "silent make -j200"
@@ -613,8 +613,6 @@ let g:expand_region_use_select_mode = 1
 "-----------------------------------------------------------------
 " plugin - lightline.vim
 "-----------------------------------------------------------------
-map <leader>cow :let g:copilot_workspace_folders = [""]
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -634,8 +632,8 @@ if v:version >= 900
 "-----------------------------------------------------------------
 " plugin - ddc.vim 用于输入补全
 "-----------------------------------------------------------------
-
-"let g:copilot_hide_during_completion = 0
+map <leader>cow :let g:copilot_workspace_folders = [""]
+let g:copilot_hide_during_completion = 0
 
 " Customize global settings
 " You must set the default ui.
@@ -712,18 +710,24 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_height = 10
 let g:ctrlp_regexp = 1
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*out*/* " Linux/MacOSX
 
 "-----------------------------------------------------------------
 " plugin - ack.vim 用于搜索文件内容
 "-----------------------------------------------------------------
-let g:ackprg = 'grep -IHnsr'
+let g:ackprg = 'grep -IHnsr --exclude=tags'
 "let g:ackprg = 'ag --nocolor --nogroup --column'
 let g:ackhighlight = 1
 "let g:ack_autoclose = 0
 "let g:ackpreview = 0
 
-nnoremap <leader>a :Ack <CR>
+nnoremap <leader>a :chd $PWD <CR> :Ack 
 nnoremap <leader>g :chd $PWD <CR> :Ack <CR>
+map <leader>run :call Run_v_sh()<CR>
+function Run_v_sh()
+execute "bash v.sh"
+execute "copen"
+endfunction
 
 nnoremap <leader>ct :call UpdateCtags() <CR>
 function! UpdateCtags()
