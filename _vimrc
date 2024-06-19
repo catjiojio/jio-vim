@@ -48,7 +48,9 @@ Plugin 'mileszs/ack.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-expand-region'
+if v:version >= 900
 Plugin 'vim-denops/denops.vim'
+endif
 Plugin 'shougo/ddc.vim'
 Plugin 'shougo/pum.vim'
 Plugin 'shougo/cmdline.vim'

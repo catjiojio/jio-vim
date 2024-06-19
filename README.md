@@ -1,3 +1,3 @@
 # jio-vim
 
-run ./config-jio-vim.sh then enjoy it.
+run 'bash ./config-jio-vim.sh' then enjoy it.
