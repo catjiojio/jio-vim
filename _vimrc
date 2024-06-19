@@ -723,6 +723,7 @@ let g:ackhighlight = 1
 
 nnoremap <leader>a :chd $PWD <CR> :Ack 
 nnoremap <leader>g :chd $PWD <CR> :Ack <CR>
+map <leader>c :vsplit ~/.vimrc <CR>
 map <leader>run :call Run_v_sh()<CR>
 function Run_v_sh()
 execute "bash v.sh"
